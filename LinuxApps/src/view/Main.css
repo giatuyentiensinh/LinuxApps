@@ -1,0 +1,13 @@
+.button {
+	-fx-border-color: white;
+	-fx-background-radius: 0;
+}
+
+.button:hover {
+	-fx-border-color: black;
+	-fx-background-radius: 0;
+}
+
+.menu-bar {
+	-fx-background-color: linear-gradient(to top right, red, yellow, red, yellow, white, white, red, yellow, pink, violet);
+}

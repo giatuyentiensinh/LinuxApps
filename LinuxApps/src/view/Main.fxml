@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="root" Stylesheets="@Main.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.Controller">
+	<top>
+		<MenuBar fx:id="mnBar" BorderPane.alignment="CENTER">
+			<menus>
+				<Menu text="File">
+					<items>
+                  <MenuItem text="New">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem onAction="#openFile" text="Open">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+						<MenuItem onAction="#exitApps" text="Close">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="W" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem onAction="#btFullScreen" text="Full Screen">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="ENTER" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="480p">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="DIGIT1" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="720p">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="DIGIT2" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#playContinue" text="Play">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="DIGIT3" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#playContinue" text="Pause">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="DIGIT4" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#stopVideo" text="Stop">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="DIGIT5" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <RadioMenuItem fx:id="miMute" mnemonicParsing="false" onAction="#checkVolume" text="Mute">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="DIGIT6" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </RadioMenuItem>
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Internet">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Search" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="About">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Anthor" />
+              </items>
+            </Menu>
+			</menus>
+		</MenuBar>
+	</top>
+	<center>
+		<MediaView fx:id="mv" fitHeight="400.0" fitWidth="690.0" BorderPane.alignment="CENTER" />
+	</center>
+	<bottom>
+		<AnchorPane fx:id="containControl" BorderPane.alignment="CENTER">
+			<children>
+				<HBox layoutX="5.0" layoutY="5.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+					<children>
+						<Button fx:id="btPlay" mnemonicParsing="false" onAction="#playContinue" prefHeight="25.0" prefWidth="57.0" text="Pause" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+						<Button mnemonicParsing="false" onAction="#stopVideo" prefHeight="25.0" prefWidth="57.0" text="Stop" />
+					</children>
+				</HBox>
+				<Slider fx:id="slTime" layoutX="130.0" layoutY="11.0" onMouseDragged="#slideDagger" onMouseReleased="#setTime" prefHeight="14.0" prefWidth="266.0" showTickMarks="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="10.0" />
+				<HBox layoutX="424.0" layoutY="5.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+					<children>
+						<Label fx:id="lbTime" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="9.0">
+							<padding>
+								<Insets left="20.0" />
+							</padding>
+							<HBox.margin>
+								<Insets />
+							</HBox.margin>
+						</Label>
+						<Button fx:id="btFullScreen" mnemonicParsing="false" onAction="#btFullScreen" text="Full Screen" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="5.0" />
+                  <ImageView fx:id="ivSound" fitHeight="25.0" fitWidth="25.0" onMouseReleased="#checkVolume" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/sound.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow choke="0.48" />
+                     </effect>
+                  </ImageView>
+						<Slider fx:id="slVolume" majorTickUnit="50.0" prefWidth="62.0" showTickLabels="true" value="100.0" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="11.0" />
+					</children>
+				</HBox>
+			</children>
+		</AnchorPane>
+	</bottom>
+</BorderPane>
